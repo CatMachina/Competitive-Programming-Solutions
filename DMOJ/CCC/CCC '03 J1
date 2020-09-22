@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Canadian Calorie Counting
+
+int main() {
+    int burger[4] = {461, 431, 420, 0},
+        drink[4] = {130, 160, 118, 0},
+        side[4] = {100, 57, 70, 0},
+        dessert[4] {167, 266, 75, 0};
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    a--;
+    b--;
+    c--;
+    d--;
+    cout << "Your total Calorie count is " << burger[a] + drink[c] + side[b] + dessert[d] << ".\n";
+    return 0;
+}
