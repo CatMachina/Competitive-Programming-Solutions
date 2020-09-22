@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+\\ Up and Down
+
+int main() {
+    int a, b, c, d, s;
+    cin >> a >> b >> c >> d >> s;
+    int nikky = (a-b)*(s/(a+b));
+    if(s%(a+b)<=a)
+    {
+        nikky += (s%(a+b));
+    }
+    else 
+    {
+        nikky += 2*a - (s%(a+b));
+    }
+    int byron = (c-d)*(s/(c+d));
+    if(s%(c+d)<=c)
+    {
+        byron += (s%(c+d));
+    }
+    else 
+    {
+        byron += 2*c - (s%(c+d));
+    }
+    if(nikky>byron)
+    {
+        cout << "Nikky\n";
+    }
+    else if(byron>nikky)
+    {
+        cout << "Byron\n";
+    }
+    else 
+    {
+        cout << "Tied\n";
+    }
+    return 0;
+}
