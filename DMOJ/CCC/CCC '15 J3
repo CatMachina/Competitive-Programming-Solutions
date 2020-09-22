@@ -2,6 +2,8 @@
 
 using namespace std;
 
+\\ Rövarspråket
+
 char closestVowel(char c)
 {
     char ret = 'a';
