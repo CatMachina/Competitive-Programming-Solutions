@@ -23,8 +23,4 @@ int main()
     {
         cout << arr[0] << "\n";
     }
-    if(j==N-1)
-    {
-        cout << arr[j] << "\n";
-    }
 }
