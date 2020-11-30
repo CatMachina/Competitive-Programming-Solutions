@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int arr[101];
+
+int main()
+{
+    int N;
+    cin >> N;
+    for(int i = 0; i < N; i++)
+    {
+        cin >> arr[i];
+    }
+    sort(arr, arr+N);
+    int med = (N-1)/2;
+    int i = med, j = med+1;
+    for(; i>=0 && j<=N-1; i--, j++)
+    {
+        cout << arr[i] << " " << arr[j] << " ";
+    }
+    if(i==0)
+    {
+        cout << arr[0] << "\n";
+    }
+    if(j==N-1)
+    {
+        cout << arr[j] << "\n";
+    }
+}
