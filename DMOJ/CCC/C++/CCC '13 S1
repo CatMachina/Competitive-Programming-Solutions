@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+// From 1987 to 2013
+
+bool checkUnique(int x)
+{
+    bool digits[10];
+    memset(digits, 0, sizeof(digits));
+    while(x>0)
+    {
+        if(digits[x%10])
+        {
+            return 0;
+        }
+        digits[x%10] = 1;
+        x /= 10;
+    }
+    return 1;
+}
+
+int main()
+{
+    int year;
+
+    cin >> year;
+
+    while(!checkUnique(++year));
+
+    cout << year << "\n";
+    return 0;
+}
