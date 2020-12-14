@@ -1,0 +1,45 @@
+#include <iostream>
+
+using namespace std;
+
+// Anagram Checker
+
+int freq1[26], freq2[26];
+
+int main()
+{
+    string one, two;
+
+    getline(cin, one);
+    getline(cin, two);
+
+    int len1 = one.length();
+    int len2 = two.length();
+
+    for(int i = 0; i < len1; i++)
+    {
+        if(one[i]!=' ')
+        {
+            freq1[one[i]-'A']++;
+        }
+    }
+
+    for(int i = 0; i < len2; i++)
+    {
+        if(two[i]!=' ')
+        {
+            freq2[two[i]-'A']++;
+        }
+    }
+
+    for(int i = 0; i < 26; i++)
+    {
+        if(freq1[i]!=freq2[i])
+        {
+            cout << "Is not an anagram.\n";
+            return 0;
+        }
+    }
+    cout << "Is an anagram.\n";
+    return 0;
+}
