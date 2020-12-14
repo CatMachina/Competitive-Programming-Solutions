@@ -1,0 +1,71 @@
+#include <iostream>
+#include <stdlib.h>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+// Absolutely Acidic
+
+int freq[1001];
+
+int main()
+{
+    int N;
+
+    cin >> N;
+    for(int i = 0; i < N; i++)
+    {
+        int a;
+        cin >> a;
+        freq[a]++;
+    }
+
+    vector<int> hi; // all of the highest frequency readings = {1} | = {1, 4, 8, 10}
+    vector<int> hi2; // all second highest frequency readings = {3, 4} | = {}
+
+    int high = 0;
+    for(int i = 1; i <= 1000; i++)
+    {
+        if(freq[i]>high)
+        {
+            high = freq[i];
+        }
+    } // high = 3
+    for(int i = 1; i <= 1000; i++)
+    {
+        if(freq[i]==high)
+        {
+            hi.push_back(i);
+            freq[i] = 0;
+        }
+    } // freq[1] = 0; hi = {1}
+
+    high = 0;
+    for(int i = 1; i <= 1000; i++)
+    {
+        if(freq[i]>high)
+        {
+            high = freq[i];
+        }
+    }
+    for(int i = 1; i <= 1000; i++)
+    {
+        if(freq[i]==high)
+        {
+            hi2.push_back(i);
+        }
+    }
+
+    if(hi.size()>=2) // {1, 6, 8, 10}
+    {
+        cout << hi[hi.size()-1] - hi[0] << "\n";
+    }
+    else // {1} in hi, 1 is the highest frequency reading
+    {
+        // 3 is the smallest second highest frequency reading
+        // 4 is the largest second highest frequency reading
+        cout << max(abs(hi[0]-hi2[0]), abs(hi[0]-hi2[hi2.size()-1])) << "\n";
+    }
+    return 0;
+}
