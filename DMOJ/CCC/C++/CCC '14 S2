@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Assigning Partners
+
+const int MAXN = 31;
+
+string first[MAXN], second[MAXN];
+int N;
+
+int main()
+{
+    cin >> N;
+    for(int i = 0; i < N; i++)
+    {
+        cin >> first[i];
+    }
+    for(int i = 0; i < N; i++)
+    {
+        cin >> second[i];
+    }
+    bool bad = 0;
+    for(int i = 0; i < N; i++)
+    {
+        if(first[i]==second[i])
+        {
+            bad = 1;
+            break;
+        }
+    }
+    for(int i = 1; i < N && !bad; i++)
+    {
+        for(int j = 0; j < i; j++)
+        {
+            bool ff = first[i]==first[j];
+            bool fs = first[i]==second[j];
+            bool sf = second[i]==first[j];
+            bool ss = second[i]==second[j];
+            if(ff && !ss)
+            {
+                bad = 1;
+            }
+            if(fs && !sf)
+            {
+                bad = 1;
+            }
+        }
+    }
+    if(bad)
+    {
+        cout << "bad\n";
+    }
+    else
+    {
+        cout << "good\n";
+    }
+    return 0;
+}
