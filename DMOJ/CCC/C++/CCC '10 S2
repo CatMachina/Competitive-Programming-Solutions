@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Huffman Encoding
+
+const int MAXN = 20;
+
+string codes[MAXN][2];
+int N;
+string sequence;
+
+bool check(string code)
+{
+    /*
+    A = "00"
+    "00000101111"
+    B = "1001011"
+    "100"
+    */
+    int codeLen = code.length();
+    int seqLen = sequence.length();
+    if(codeLen > seqLen)
+    {
+        return false;
+    }
+
+    for(int i = 0; i < codeLen; i++)
+    {
+        if(code[i]!=sequence[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    cin >> N;
+    for(int i = 0; i < N; i++)
+    {
+        cin >> codes[i][0] >> codes[i][1];
+    }
+    cin >> sequence;
+    string output = "";
+    while(sequence.length() > 0)
+    {
+        for(int i = 0; i < N; i++)
+        {
+            if(check(codes[i][1]))
+            {
+                output += codes[i][0];
+                int codeLen = codes[i][1].length();
+                sequence = sequence.substr(codeLen);
+                break;
+            }
+        }
+    }
+    cout << output;
+    return 0;
+}
+
+/*
+A 00
+B 01
+C 10
+D 110
+E 111
+"00000101111"
+string str = "00000101111";
+str.substr(a, b);
+str.substr(0, 2); "00"
+// take string from index a to length b
+str.substr(pos);
+str.substr(2); "000101111"
+// take string from pos to the end
+*/
